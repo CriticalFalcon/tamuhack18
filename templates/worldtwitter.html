@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="//netdna.boostrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	<style>
+            .floating-box {
+	             float: left;
+	             width: 150px;
+	             height: 75px;
+	             margin: 10px; 
+            }
+	         
+            .after-box {
+	             clear: left;    
+            }
+            .fa {
+                padding: 10px;
+                font-size: 30px;
+                width: 50px;
+                text-align: center;
+                text-decoration: none;
+                margin: 5px 2px;
+                float: left;
+            }
+
+            .fa:hover {
+                opacity: 0.9;
+            }
+            .fa-twitter {
+                background: #55ACEE;
+                color: white;
+            }
+            .fa-google {
+                background: #dd4b39;
+                color: white;
+            }
+	</style>
+	<title>Flask Template Example</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" media="screen" rel="stylesheet">
+	<style type="text/css">
+	   
+	     .container {
+	       max-width: 1300px;
+	       padding-top: 0px;
+	       width: 48%;
+	       height: 75px;
+	       margin: 20px;
+	     }
+	     .container2 {
+	       max-width: 1300px;
+	       padding-top: 0px;
+	       width: 48%;
+	       height: 75px;
+	       margin: 10px;
+	       float: left;
+	     }
+	</style>
+</head>
+<body style="background-color:rgb(238, 238, 238)">
+	<div class="container">
+		<b></b>
+		<a href="#" class="fa fa-twitter"></a><h2><p><b>&nbsp; Trending Twitter Posts in the World:</b></p></h2>
+		<hr style="height:1px;border:none;color:#333;background-color:#333;">
+		<ul>
+			<li style="list-style: none">{% for n in worldNums %}</li>
+			<li>
+				<h3>{% print(worldNames[n]) %}</h3>
+			</li>
+			<li style="list-style: none; display: inline">
+				<h4><a href="{% print(worldUrls[n]) %}">{% print(worldUrls[n]) %}</a></h4>
+				<hr style="height:1px;border:none;color:#333;background-color:#333;">
+				{% endfor %}
+			</li>
+		</ul>
+	</div>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js">
+	</script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
+	</script>
+</body>
+</html>

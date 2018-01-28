@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//netdna.boostrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+	<style>
+	           .floating-box {
+	                float: left;
+	                width: 150px;
+	                height: 75px;
+	                margin: 10px; 
+	           }
+	            
+	           .after-box {
+	                clear: left;    
+	           }
+	           .fa {
+	               padding: 10px;
+	               font-size: 30px;
+	               width: 50px;
+	               text-align: center;
+	               text-decoration: none;
+	               margin: 5px 2px;
+	               float: left;
+	           }
+
+	           .fa:hover {
+	               opacity: 0.9;
+	           }
+	           .fa-twitter {
+	               background: #55ACEE;
+	               color: white;
+	           }
+	           .fa-google {
+	               background: #dd4b39;
+	               color: white;
+	           }
+	</style>
+	<title>Flask Template Example</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" media="screen" rel="stylesheet">
+	<style type="text/css">
+	      
+	        .container {
+	          max-width: 1300px;
+	          padding-top: 5px;
+	          width: 48%;
+	          height: 75px;
+	          margin: 10px;
+	          float: right;
+	        }
+	        .container2 {
+	          max-width: 1300px;
+	          padding-top: 5px;
+	          width: 48%;
+	          height: 75px;
+	          margin: 10px;
+	          float: left;
+	        }
+	        .btn {
+	           display: inline-block;
+	           background: #e2e2e2;
+	           border: 0;
+	           line-height: 2.5em;
+	           padding: 0 0 0 1em;
+	           margin-bottom: 1em;
+	           outline: none;
+	           text-decoration: none;
+	           color: #666;}
+
+	       .arrow {
+	           display: inline-block;
+	           line-height: 2.5em;
+	           text-align: center;
+	           background: #333;
+	           color: white;
+	           font-size: 1em;
+	           width: 2.5em;
+	           transition: margin 200ms;
+	           margin-left: .75em;
+	       }
+	 
+	       &:hover {
+	           background: white;}
+	       .arrow {
+	            margin-left: 1.25em;
+	           background-color: darken(#333,5%);
+	       } 
+	           
+	       &:active {
+	           background: #ccc;}
+	       .arrow {
+	           margin-left: 1.5em;
+	       } 
+
+	       .btn-info {
+
+	       }
+	       .arrow {
+	           background-color: indianred;
+	       }
+	       &:hover {
+
+	       }
+	       .arrow {
+	           background-color: desaturate(darken(indianred,5%),5%);
+	       }
+	 
+
+
+	       .btn-learn {
+
+	       }
+	       .arrow {
+	           background-color: salmon;
+	        }
+	       &:hover {}
+
+	       .arrow {
+	           background-color: desaturate(darken(salmon,5%),5%);
+	       }
+	 
+
+	button::-moz-focus-inner {
+	   border: none;
+	}
+
+	body {
+	 padding: 4em;
+	 background-color: #eee;
+	}
+
+	h1 {
+	 font-size: 1.2em;
+	 font-weight: normal;
+	 text-align: center;
+	 color: #666;
+	}
+
+	hr {
+	 border: 1px solid #e3e3e3;
+	}
+
+	.left {
+	 text-align: left;
+	}
+	.right {
+	 text-align: right;
+	}
+	.center {
+	 text-align: center;
+	}
+	</style>
+</head>
+<body style="background-color:rgb(235, 233, 233);">
+	<div class="right">
+		<a class="btn btn-info" href="./worldtwitter">More Info <span class="arrow">❯</span></a>
+	</div>
+	<div class="container">
+		<b></b> <a class="fa fa-twitter" href="#"></a>
+		<h2><p><b>&nbsp; Trending Twitter Posts in US:</b></p></h2>
+		<hr style="height:1px;border:none;color:#333;background-color:#333;">
+		<ul>
+			<li style="list-style: none">{% for n in twitter_nums %}</li>
+			<li>
+				<h3>{% print(twitter_names[n]) %}</h3>
+			</li>
+			<li style="list-style: none; display: inline">
+				<h4><a href="{% print(twitter_urls[n]) %}">{% print(twitter_urls[n]) %}</a></h4>
+				<hr style="height:1px;border:none;color:#333;background-color:#333;">
+				{% endfor %}
+			</li>
+		</ul>
+	</div>
+	<div class="container2">
+		<b></b> <a class="fa fa-google" href="#"></a>
+		<h2><p><b>&nbsp; Trending Google Topics:</b></p></h2>
+		<hr style="height:1px;border:none;color:#333;background-color:#333;">
+		{% if urls %}
+		<h2><b>Sports</b></h2>
+		<ul>
+			<li style="list-style: none">{% for item in urls: %} {% if item[1] == 'sport': %}</li>
+			<li>
+				<h3>{{ item[2] }}</h3>
+			</li>
+			<li style="list-style: none; display: inline">
+				<h4><a href="{{ item[0] }}">{{ item[0] }}</a></h4>
+				<hr style="height:1px;border:none;color:#333;background-color:#333;">
+				{% endif %} {% endfor %}
+			</li>
+		</ul><br>
+		<h2><b>News</b></h2>
+		<ul>
+			<li style="list-style: none">{% for item in urls: %} {% if item[1] == 'news': %}</li>
+			<li>
+				<h3>{{ item[2] }}</h3>
+			</li>
+			<li style="list-style: none; display: inline">
+				<h4><a href="{{ item[0] }}">{{ item[0] }}</a></h4>
+				<hr style="height:1px;border:none;color:#333;background-color:#333;">
+				{% endif %} {% endfor %}
+			</li>
+		</ul><br>
+		<h2><b>Entertainment</b></h2>
+		<ul>
+			<li style="list-style: none">{% for item in urls: %} {% if item[1] == 'entertainment': %}</li>
+			<li>
+				<h3>{{ item[2] }}</h3>
+			</li>
+			<li style="list-style: none; display: inline">
+				<h4><a href="{{ item[0] }}">{{ item[0] }}</a></h4>
+				<hr style="height:1px;border:none;color:#333;background-color:#333;">
+				{% endif %} {% endfor %}
+			</li>
+		</ul><br>
+		<h2><b>Miscellaneous</b></h2>
+		<ul>
+			<li style="list-style: none">{% for item in urls: %} {% if item[1] == 'misc': %}</li>
+			<li>
+				<h3>{{ item[2] }}</h3>
+			</li>
+			<li style="list-style: none; display: inline">
+				<h4><a href="{{ item[0] }}">{{ item[0] }}</a></h4>
+				<hr style="height:1px;border:none;color:#333;background-color:#333;">
+				{% endif %} {% endfor %}
+			</li>
+		</ul>{% endif %}
+	</div>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js">
+	</script> 
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
+	</script>
+</body>
+</html>
